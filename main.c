@@ -34,12 +34,22 @@ int main(void) {
             default:break;
         }
     } while (choix != 0);
+
     for (int i = 0; i < nbPlists; i++) {
         if (plists[i] != NULL) {
-            free(plists[i]->nom);
-            plists[i]->nom = NULL;
-            free(plists[i]->tabMorceaux);
-            plists[i]->tabMorceaux = NULL;
+            if (plists[i]->nom != NULL) {
+                free(plists[i]->nom);
+                plists[i]->nom = NULL;
+            }
+            if (plists[i]->tabMorceaux != NULL) {
+                for (int j = 0; j < plists[i]->nbMorceaux; j++) {
+                    if (plists[i]->tabMorceaux[j] != NULL) {
+                        libererMorceau(plists[i]->tabMorceaux[j]);
+                    }
+                }
+                free(plists[i]->tabMorceaux);
+                plists[i]->tabMorceaux = NULL;
+            }
             free(plists[i]);
             plists[i] = NULL;
         }

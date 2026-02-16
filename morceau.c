@@ -20,7 +20,7 @@ Morceau* creerMorceau (void) {
     strcpy(m->titre, titre);
 
     char artiste[MC_ARTISTE_MAX];
-    saisieStr(titre, "\nSaisir artiste", MC_ARTISTE_MAX);
+    saisieStr(artiste, "\nSaisir artiste", MC_ARTISTE_MAX);
     m->artiste = malloc((strlen(artiste) + 1) * sizeof(char));
     if (m->artiste == NULL) {
         free(m->titre);

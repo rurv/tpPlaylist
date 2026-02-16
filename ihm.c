@@ -37,9 +37,9 @@ int menu (void) {
 }
 
 void saisieStr (char* str, const char* dialogue, const int max) {
-    printf("%s\n", dialogue);
-    printf("> ");
+    printf("%s\n> ", dialogue);
     if (fgets(str, max, stdin) != NULL) {
+        if (str[0] == '\n') fgets(str, max, stdin);
         if (str[strlen(str) - 1] == '\n') str[strlen(str) - 1] = '\0';
     }
 }

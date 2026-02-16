@@ -67,7 +67,7 @@ void nvMorceauVersPlist (Playlist* pl) {
     if (nvm != NULL) {
         pl->tabMorceaux[pl->nbMorceaux] = nvm;
         pl->nbMorceaux++;
-        printf("\"%s\" - %s\ta bien ete ajoute a %s\n", nvm->titre, nvm->artiste, pl->nom);
+        printf("\n\"%s\" par %s a bien ete ajoute a %s\n", nvm->titre, nvm->artiste, pl->nom);
         entreeNext();
     }
 }
