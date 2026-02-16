@@ -28,11 +28,7 @@ int menu (void) {
     printf("8. Supprimer un morceau d'une playlist\n");
     printf("9. Supprimer un morceau de toutes les playlists\n");
     printf("0. Quitter\n\n");
-    do {
-        printf("> ");
-        scanf("%d", &choix);
-        getchar();
-    } while (choix < 0 || choix > 9);
+    choix = saisieInt("Veuillez choisir une option", 0, 9);
     return choix;
 }
 
@@ -45,13 +41,21 @@ void saisieStr (char* str, const char* dialogue, const int max) {
 }
 
 int saisieInt (const char* dialogue, const int min, const int max) {
-    int n;
+    int n, r;
     printf("%s (%d - %d)\n", dialogue, min, max);
     do {
         printf("> ");
-        scanf("%d", &n);
+        r = scanf("%d", &n);
+        if (r != 1) {
+            printf("Veuillez saisir un nombre !\n");
+            while (getchar() != '\n');
+            continue;
+        }
         getchar();
-    } while (n < min || n > max);
+        if (n < min || n > max) {
+            printf("Valeur saisie incorrecte !\n");
+        }
+    } while (r != 1 || n < min || n > max);
     return n;
 }
 

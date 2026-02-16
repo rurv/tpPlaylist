@@ -71,3 +71,23 @@ void nvMorceauVersPlist (Playlist* pl) {
         entreeNext();
     }
 }
+
+void libererPlist (Playlist* pl) {
+    if (pl != NULL) {
+        if (pl->nom != NULL) {
+            free(pl->nom);
+            pl->nom = NULL;
+        }
+        if (pl->tabMorceaux != NULL) {
+            for (int j = 0; j < pl->nbMorceaux; j++) {
+                if (pl->tabMorceaux[j] != NULL) {
+                    libererMorceau(pl->tabMorceaux[j]);
+                }
+            }
+            free(pl->tabMorceaux);
+            pl->tabMorceaux = NULL;
+        }
+        free(pl);
+        pl = NULL;
+    }
+}
