@@ -5,7 +5,6 @@
 #ifndef TPPLAYLIST_PLAYLIST_H
 #define TPPLAYLIST_PLAYLIST_H
 
-#include <string.h>
 #include "ihm.h"
 #include "morceau.h"
 

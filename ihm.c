@@ -4,6 +4,8 @@
 
 #include "ihm.h"
 #include "playlist.h"
+#include <stdio.h>
+#include <string.h>
 
 void clear (void) {
     printf("\033[H\033[2J");
@@ -48,7 +50,7 @@ int saisieInt (const char* dialogue, const int min, const int max) {
         r = scanf("%d", &n);
         if (r != 1) {
             printf("Veuillez saisir un nombre !\n");
-            while (getchar() != '\n');
+            while (getchar() != '\n') {}
             continue;
         }
         getchar();
@@ -68,7 +70,7 @@ void confirmPlist (const Playlist* p) {
     entreeNext();
 }
 
-void listePlists (const Playlist*** plists, const int nbPlists) {
+void listePlists (Playlist* const** plists, const int nbPlists) {
     printf("%d playlist", nbPlists);
     if (nbPlists > 1) printf("s");
     printf(" :\n\n");
@@ -76,14 +78,13 @@ void listePlists (const Playlist*** plists, const int nbPlists) {
     printf("\n");
 }
 
-int choixPlist (const Playlist** plists, const int nbPlists) {
-    int choix;
+int choixPlist (Playlist* const* plists, const int nbPlists) {
     listePlists(&plists, nbPlists);
-    choix = saisieInt("Choisir playlist", 1, nbPlists);
+    const int choix = saisieInt("Choisir playlist", 1, nbPlists);
     return choix;
 }
 
-void naviguerDansVotreBibliotheque (const int nbPlists, const Playlist*** plists) {
+void naviguerDansVotreBibliotheque (const int nbPlists, Playlist* const** plists) {
     clear();
     if (nbPlists > 0) {
         listePlists(plists, nbPlists);
@@ -95,7 +96,7 @@ void naviguerDansVotreBibliotheque (const int nbPlists, const Playlist*** plists
 }
 
 void creerUnePlaylist (int *nbPlists, Playlist*** plists) {
-    int nbPlistsOld = *nbPlists;
+    const int nbPlistsOld = *nbPlists;
     *plists = creerPlist(*plists, nbPlists);
     if (*nbPlists > nbPlistsOld) confirmPlist((*plists)[*nbPlists - 1]);
 }
@@ -103,7 +104,7 @@ void creerUnePlaylist (int *nbPlists, Playlist*** plists) {
 void creerMorceauAjouterPlaylist (const int nbPlists, Playlist*** plists) {
     clear();
     if (nbPlists > 0) {
-        int i = choixPlist(*plists, nbPlists) - 1;
+        const int i = choixPlist(*plists, nbPlists) - 1;
         nvMorceauVersPlist((*plists)[i]);
     } else {
         printf("Veuillez creer une playlist !\n");

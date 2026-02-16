@@ -5,8 +5,6 @@
 #ifndef TPPLAYLIST_MORCEAU_H
 #define TPPLAYLIST_MORCEAU_H
 
-#include <stdlib.h>
-
 #define MC_TITRE_MAX 128
 #define MC_TITRE_MIN 1
 #define MC_ARTISTE_MAX 32

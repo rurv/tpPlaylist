@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 #include "playlist.h"
 #include "ihm.h"
 

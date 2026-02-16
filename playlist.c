@@ -4,6 +4,10 @@
 
 #include "playlist.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 Playlist* initPlist (const char* nom, const int capacite) {
     Playlist *p = malloc(sizeof(Playlist));
     if (p == NULL) return NULL;
@@ -32,7 +36,7 @@ Playlist** creerPlist (Playlist** plists, int* nbPlists) {
     char nom[PL_NOM_TAILLE_MAX];
     saisieStr(nom, "Veuillez saisir le nom de la playlist.", PL_NOM_TAILLE_MAX);
     printf("\n");
-    int capacite = saisieInt("Veuillez saisir la capacite maximale de la playlist", PL_CAPACITE_MIN, PL_CAPACITE_MAX);
+    const int capacite = saisieInt("Veuillez saisir la capacite maximale de la playlist", PL_CAPACITE_MIN, PL_CAPACITE_MAX);
     Playlist* nouvellePl = initPlist(nom, capacite);
     if (nouvellePl != NULL) {
         Playlist **temp = realloc(plists, (*nbPlists + 1) * sizeof(Playlist*));

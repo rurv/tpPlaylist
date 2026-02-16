@@ -5,8 +5,6 @@
 #ifndef TPPLAYLIST_IHM_H
 #define TPPLAYLIST_IHM_H
 
-#include <stdio.h>
-#include <string.h>
 typedef struct Playlist Playlist;
 
 void clear (void);
@@ -15,10 +13,10 @@ int menu (void);
 void saisieStr (char* str, const char* dialogue, int max);
 int saisieInt (const char* dialogue, int min, int max);
 void confirmPlist (const Playlist* p);
-void listePlists (const Playlist*** plists, int nbPlists);
-int choixPlist (const Playlist** plists, int nbPlists);
+void listePlists (Playlist* const** plists, int nbPlists);
+int choixPlist (Playlist* const* plists, int nbPlists);
 
-void naviguerDansVotreBibliotheque (int nbPlists, const Playlist*** plists);
+void naviguerDansVotreBibliotheque (int nbPlists, Playlist* const** plists);
 void creerUnePlaylist (int *nbPlists, Playlist*** plists);
 void creerMorceauAjouterPlaylist (int nbPlists, Playlist*** plists);
 

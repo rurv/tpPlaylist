@@ -4,6 +4,8 @@
 
 #include "morceau.h"
 #include "playlist.h"
+#include <stdlib.h>
+#include <string.h>
 
 Morceau* creerMorceau (void) {
     Morceau* m = malloc(sizeof(Morceau));
