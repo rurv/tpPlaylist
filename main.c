@@ -19,7 +19,7 @@ int main(void) {
             case 4: break;
             case 5: break;
             case 6:
-                creerMorceauAjouterPlaylist(nbPlists, plists);
+                creerMorceauAjouterPlaylist(nbPlists, &plists);
                 break;
             case 7: break;
             case 8: break;
