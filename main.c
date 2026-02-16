@@ -3,24 +3,19 @@
 #include "ihm.h"
 
 int main(void) {
-    debug("Demarrage");
-    int nbPlist = 0, choix = 0;
+    int nbPlists = 0, choix = 0;
     Playlist **plists = NULL;
-    debug("Tableau des playlists cree");
     do {
         choix = menu();
         switch (choix) {
             case 1:
-                char nom[PL_NOM_TAILLE_MAX];
-                saisieStr(nom, "Veuillez saisir le nom de la playlist.", PL_NOM_TAILLE_MAX);
-                int capacite = saisieInt("Veuillez saisir la capacite maximale de la playlist", PL_CAPACITE_MIN, PL_CAPACITE_MAX);
-                creerPlist(nom, capacite);
+                plists = creerPlist(plists, &nbPlists);
                 break;
             default:
                 break;
         }
     } while (choix != 0);
-    for (int i = 0; i < nbPlist; i++) {
+    for (int i = 0; i < nbPlists; i++) {
         if (plists[i] != NULL) {
             free(plists[i]);
             plists[i] = NULL;

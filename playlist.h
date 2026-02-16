@@ -19,6 +19,7 @@ typedef struct {
     Morceau** tabMorceaux;
 } Playlist;
 
-Playlist* creerPlist (const char* nom, int capacite);
+Playlist* initPlist (const char* nom, int capacite);
+Playlist** creerPlist (Playlist** plists, int* nbPlists);
 
 #endif //TPPLAYLIST_PLAYLIST_H

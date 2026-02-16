@@ -4,40 +4,48 @@
 
 #include "playlist.h"
 
-Playlist* creerPlist (const char* nom, const int capacite) {
-    debug("DEBUT alloc. structure");
+Playlist* initPlist (const char* nom, const int capacite) {
     Playlist *p = malloc(sizeof(Playlist));
-    if (p == NULL) {
-        debug("ECHEC alloc. structure");
-        return NULL;
-    }
-    debug("SUCCES alloc. structure");
-    debug("DEBUT alloc. tab morceaux");
+    if (p == NULL) return NULL;
     p->tabMorceaux = malloc(capacite * sizeof(Morceau*));
     if (p->tabMorceaux == NULL) {
-        debug("ECHEC alloc. tab morceaux");
-        debug("FREE structure");
         free(p);
         p = NULL;
         return NULL;
     }
-    debug("SUCCES alloc. tab morceaux");
-    debug("DEBUT alloc. nom");
-    int len = strlen(nom) + 1;
-    p->nom = malloc(len * sizeof(char));
+    p->nom = malloc((strlen(nom) + 1) * sizeof(char));
     if (p->nom == NULL) {
-        debug("ECHEC alloc. nom");
-        debug("FREE tab morceaux");
         free(p->tabMorceaux);
         p->tabMorceaux = NULL;
-        debug("FREE structure");
         free(p);
         p = NULL;
         return NULL;
     }
-    debug("SUCCES alloc. nom");
+    strcpy(p->nom, nom);
     p->capacite = capacite;
     p->nbMorceaux = 0;
-    debug("SUCCES toutes alloc., retour de p");
     return p;
+}
+
+Playlist** creerPlist (Playlist** plists, int* nbPlists) {
+    char nom[PL_NOM_TAILLE_MAX];
+    saisieStr(nom, "Veuillez saisir le nom de la playlist.", PL_NOM_TAILLE_MAX);
+    int capacite = saisieInt("Veuillez saisir la capacite maximale de la playlist", PL_CAPACITE_MIN, PL_CAPACITE_MAX);
+    Playlist* nouvellePl = initPlist(nom, capacite);
+    if (nouvellePl != NULL) {
+        Playlist **temp = realloc(plists, (*nbPlists + 1) * sizeof(Playlist*));
+        if (temp != NULL) {
+            plists = temp;
+            plists[*nbPlists] = nouvellePl;
+            (*nbPlists)++;
+        } else {
+            free(nouvellePl->nom);
+            nouvellePl->nom = NULL;
+            free(nouvellePl->tabMorceaux);
+            nouvellePl->tabMorceaux = NULL;
+            free(nouvellePl);
+            nouvellePl = NULL;
+        }
+    }
+    return plists;
 }
