@@ -9,6 +9,11 @@ void clear (void) {
     printf("\033[H\033[2J");
 }
 
+void entreeNext (void) {
+    printf("ENTREE pour retourner au menu...");
+    getchar();
+}
+
 int menu (void) {
     clear();
     int choix = 0;
@@ -56,6 +61,20 @@ void confirmPlist (const Playlist* p) {
     printf("Playlist creee avec succes\n\n");
     printf("\"%s\"\n", p->nom);
     printf("0/%d Morceaux\n\n", p->capacite);
-    printf("ENTREE pour retourner au menu...");
-    getchar();
+    entreeNext();
+}
+
+void listePlists (const Playlist** plists, const int nbPlists) {
+    printf("%d playlist", nbPlists);
+    if (nbPlists > 1) printf("s");
+    printf(" :\n\n");
+    for (int i = 0; i < nbPlists; i++) printf("%d. %s\t(%d/%d)\n", i + 1, plists[i]->nom, plists[i]->nbMorceaux, plists[i]->capacite);
+    printf("\n");
+}
+
+int choixPlist (const Playlist** plists, const int nbPlists) {
+    int choix;
+    listePlists(plists, nbPlists);
+    choix = saisieInt("Choisir playlist", 1, nbPlists);
+    return choix;
 }

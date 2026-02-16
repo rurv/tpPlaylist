@@ -21,5 +21,6 @@ typedef struct Playlist {
 
 Playlist* initPlist (const char* nom, int capacite);
 Playlist** creerPlist (Playlist** plists, int* nbPlists);
+void nvMorceauVersPlist (Playlist* pl);
 
 #endif //TPPLAYLIST_PLAYLIST_H

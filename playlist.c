@@ -51,3 +51,23 @@ Playlist** creerPlist (Playlist** plists, int* nbPlists) {
     }
     return plists;
 }
+
+void nvMorceauVersPlist (Playlist* pl) {
+    clear();
+    printf("%s\n", pl->nom);
+    if (pl == NULL) return;
+
+    if (pl->nbMorceaux >= pl->capacite) {
+        printf("Playlist pleine ! (%d/%d morceaux)\n", pl->nbMorceaux, pl->capacite);
+        entreeNext();
+        return;
+    }
+
+    Morceau* nvm = creerMorceau();
+    if (nvm != NULL) {
+        pl->tabMorceaux[pl->nbMorceaux] = nvm;
+        pl->nbMorceaux++;
+        printf("\"%s\" - %s\ta bien ete ajoute a %s\n", nvm->titre, nvm->artiste, pl->nom);
+        entreeNext();
+    }
+}

@@ -18,7 +18,16 @@ int main(void) {
             case 3: break;
             case 4: break;
             case 5: break;
-            case 6: break;
+            case 6:
+                clear();
+                if (nbPlists > 0) {
+                    int i = choixPlist(plists, nbPlists);
+                    nvMorceauVersPlist(plists[i]);
+                } else {
+                    printf("Veuillez creer une playlist !\n");
+                    entreeNext();
+                }
+                break;
             case 7: break;
             case 8: break;
             case 9: break;
