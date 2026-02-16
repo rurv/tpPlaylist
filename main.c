@@ -9,10 +9,10 @@ int main(void) {
         choix = menu();
         switch (choix) {
             case 1:
-                naviguerDansVotreBibliotheque(nbPlists, plists);
+                naviguerDansVotreBibliotheque(nbPlists, &plists);
                 break;
             case 2: {
-                creerUnePlaylist(&nbPlists, plists);
+                creerUnePlaylist(&nbPlists, &plists);
                 break;
             }
             case 3: break;
