@@ -5,17 +5,29 @@
 #include "ihm.h"
 #include "playlist.h"
 
+void clear (void) {
+    printf("\033[H\033[2J");
+}
+
 int menu (void) {
+    clear();
     int choix = 0;
-    printf("Bibliotheque Musicale\n");
-    printf("Menu :\n");
-    printf("1. Creer Playlist\n");
-    printf("0. Quitter\n");
+    printf("Bibliotheque Musicale\n\n");
+    printf("1. Naviguer dans votre bibliothèque\n");
+    printf("2. Creer une playlist\n");
+    printf("3. Supprimer une playlist\n");
+    printf("4. Importer une playlist\n");
+    printf("5. Exporter une playlist\n");
+    printf("6. Creer un morceau et l'ajouter a une playlist\n");
+    printf("7. Ajouter un morceau d'une playlist a une autre\n");
+    printf("8. Supprimer un morceau d'une playlist\n");
+    printf("9. Supprimer un morceau de toutes les playlists\n");
+    printf("0. Quitter\n\n");
     do {
         printf("> ");
         scanf("%d", &choix);
         getchar();
-    } while (choix < 0 || choix > 1);
+    } while (choix < 0 || choix > 9);
     return choix;
 }
 
@@ -39,8 +51,11 @@ int saisieInt (const char* dialogue, const int min, const int max) {
 }
 
 void confirmPlist (const Playlist* p) {
+    clear();
     if (p == NULL) return;
-    printf("Playlist creee avec succes\n");
+    printf("Playlist creee avec succes\n\n");
     printf("\"%s\"\n", p->nom);
-    printf("0/%d Morceaux\n", p->capacite);
+    printf("0/%d Morceaux\n\n", p->capacite);
+    printf("ENTREE pour retourner au menu...");
+    getchar();
 }

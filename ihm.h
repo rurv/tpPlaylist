@@ -9,9 +9,10 @@
 #include <string.h>
 typedef struct Playlist Playlist;
 
+void clear (void);
 int menu (void);
 void saisieStr (char* str, const char* dialogue, int max);
-int saisieInt(const char* dialogue, int min, int max);
-void confirmPlist(const Playlist* p);
+int saisieInt (const char* dialogue, int min, int max);
+void confirmPlist (const Playlist* p);
 
 #endif //TPPLAYLIST_IHM_H
