@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 typedef struct {
-    char* titre, artiste;
+    char *titre, *artiste;
     int duree, annee, nbRef;
 } Morceau;
 

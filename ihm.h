@@ -9,5 +9,7 @@
 
 void debug (const char* str);
 int menu (void);
+char* saisieStr (const char* dialogue, int max);
+int saisieInt(const char* dialogue, int min, int max);
 
 #endif //TPPLAYLIST_IHM_H

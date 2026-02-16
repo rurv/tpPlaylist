@@ -5,7 +5,13 @@
 #ifndef TPPLAYLIST_PLAYLIST_H
 #define TPPLAYLIST_PLAYLIST_H
 
+#include <string.h>
+#include "ihm.h"
 #include "morceau.h"
+
+#define PL_NOM_TAILLE_MAX 64
+#define PL_CAPACITE_MIN 1
+#define PL_CAPACITE_MAX 100
 
 typedef struct {
     char* nom;
@@ -13,6 +19,6 @@ typedef struct {
     Morceau** tabMorceaux;
 } Playlist;
 
-Playlist* creerPlist (const char* nom, const int capacite, Morceau** tabMorceaux);
+Playlist* creerPlist (const char* nom, int capacite);
 
 #endif //TPPLAYLIST_PLAYLIST_H
