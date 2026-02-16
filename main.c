@@ -21,7 +21,7 @@ int main(void) {
             case 6:
                 clear();
                 if (nbPlists > 0) {
-                    int i = choixPlist(plists, nbPlists);
+                    int i = choixPlist(plists, nbPlists) - 1;
                     nvMorceauVersPlist(plists[i]);
                 } else {
                     printf("Veuillez creer une playlist !\n");

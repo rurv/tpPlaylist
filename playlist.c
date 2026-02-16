@@ -54,8 +54,8 @@ Playlist** creerPlist (Playlist** plists, int* nbPlists) {
 
 void nvMorceauVersPlist (Playlist* pl) {
     clear();
-    printf("%s\n", pl->nom);
     if (pl == NULL) return;
+    printf("%s\n", pl->nom);
 
     if (pl->nbMorceaux >= pl->capacite) {
         printf("Playlist pleine ! (%d/%d morceaux)\n", pl->nbMorceaux, pl->capacite);
