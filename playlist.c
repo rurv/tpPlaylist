@@ -3,3 +3,7 @@
 //
 
 #include "playlist.h"
+
+Playlist* creerPlist (const char* nom, const int capacite, Morceau** tabMorceaux) {
+
+}
