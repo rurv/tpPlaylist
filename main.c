@@ -8,11 +8,12 @@ int main(void) {
     do {
         choix = menu();
         switch (choix) {
-            case 1:
+            case 1: {
                 int nbPlistsOld = nbPlists;
                 plists = creerPlist(plists, &nbPlists);
                 if (nbPlists > nbPlistsOld) confirmPlist(plists[nbPlists - 1]);
                 break;
+            }
             default:
                 break;
         }
