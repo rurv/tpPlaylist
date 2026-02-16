@@ -1,0 +1,8 @@
+.idea/
+.vscode/
+*.swp
+cmake-build-debug/
+cmake-build-release/
+/build/
+tpPlaylist
+*.exe
