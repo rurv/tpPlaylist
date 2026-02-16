@@ -15,15 +15,27 @@ int main(void) {
                 creerUnePlaylist(&nbPlists, &plists);
                 break;
             }
-            case 3: break;
-            case 4: break;
-            case 5: break;
+            case 3:
+                //supprimerPlaylist();
+                break;
+            case 4:
+                //importerPlaylist();
+                break;
+            case 5:
+                //exporterPlaylist();
+                break;
             case 6:
                 creerMorceauAjouterPlaylist(nbPlists, &plists);
                 break;
-            case 7: break;
-            case 8: break;
-            case 9: break;
+            case 7:
+                //morceauPlAPl();
+                break;
+            case 8:
+                //supprimerMorceauPl();
+                break;
+            case 9:
+                //supprimerMorceauAll();
+                break;
             default:break;
         }
     } while (choix != 0);
