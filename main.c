@@ -20,6 +20,10 @@ int main(void) {
     } while (choix != 0);
     for (int i = 0; i < nbPlists; i++) {
         if (plists[i] != NULL) {
+            free(plists[i]->nom);
+            plists[i]->nom = NULL;
+            free(plists[i]->tabMorceaux);
+            plists[i]->tabMorceaux = NULL;
             free(plists[i]);
             plists[i] = NULL;
         }
