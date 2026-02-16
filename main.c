@@ -11,7 +11,10 @@ int main(void) {
         choix = menu();
         switch (choix) {
             case 1:
-                creerPlist(saisieStr("Veuillez saisir le nom de la playlist.", PL_NOM_TAILLE_MAX), saisieInt("Veuillez saisir la capacite maximale de la playlist", PL_CAPACITE_MIN, PL_CAPACITE_MAX));
+                char nom[PL_NOM_TAILLE_MAX];
+                saisieStr(nom, "Veuillez saisir le nom de la playlist.", PL_NOM_TAILLE_MAX);
+                int capacite = saisieInt("Veuillez saisir la capacite maximale de la playlist", PL_CAPACITE_MIN, PL_CAPACITE_MAX);
+                creerPlist(nom, capacite);
                 break;
             default:
                 break;

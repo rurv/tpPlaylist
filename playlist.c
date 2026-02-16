@@ -13,7 +13,7 @@ Playlist* creerPlist (const char* nom, const int capacite) {
     }
     debug("SUCCES alloc. structure");
     debug("DEBUT alloc. tab morceaux");
-    p->tabMorceaux = malloc(capacite * sizeof(Morceau));
+    p->tabMorceaux = malloc(capacite * sizeof(Morceau*));
     if (p->tabMorceaux == NULL) {
         debug("ECHEC alloc. tab morceaux");
         debug("FREE structure");
@@ -27,12 +27,12 @@ Playlist* creerPlist (const char* nom, const int capacite) {
     p->nom = malloc(len * sizeof(char));
     if (p->nom == NULL) {
         debug("ECHEC alloc. nom");
-        debug("FREE structure");
-        free(p);
-        p = NULL;
         debug("FREE tab morceaux");
         free(p->tabMorceaux);
         p->tabMorceaux = NULL;
+        debug("FREE structure");
+        free(p);
+        p = NULL;
         return NULL;
     }
     debug("SUCCES alloc. nom");

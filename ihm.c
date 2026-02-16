@@ -27,9 +27,8 @@ int menu (void) {
     return choix;
 }
 
-char* saisieStr (const char* dialogue, const int max) {
+void saisieStr (char* str, const char* dialogue, const int max) {
     debug("APPEL saisie string");
-    char str[max];
     printf("%s\n", dialogue);
     printf("> ");
     scanf("%s", str);
