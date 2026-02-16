@@ -18,4 +18,8 @@ void confirmPlist (const Playlist* p);
 void listePlists (const Playlist** plists, int nbPlists);
 int choixPlist (const Playlist** plists, int nbPlists);
 
+void naviguerDansVotreBibliotheque (int nbPlists, const Playlist** plists);
+void creerUnePlaylist (int *nbPlists, Playlist** plists);
+void creerMorceauAjouterPlaylist (int nbPlists, Playlist** plists);
+
 #endif //TPPLAYLIST_IHM_H

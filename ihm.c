@@ -72,7 +72,7 @@ void listePlists (const Playlist** plists, const int nbPlists) {
     printf("%d playlist", nbPlists);
     if (nbPlists > 1) printf("s");
     printf(" :\n\n");
-    for (int i = 0; i < nbPlists; i++) printf("%d. %s\t(%d/%d)\n", i + 1, plists[i]->nom, plists[i]->nbMorceaux, plists[i]->capacite);
+    for (int i = 0; i < nbPlists; i++) printf("%d. (%d/%d)\t%s\n", i + 1, plists[i]->nbMorceaux, plists[i]->capacite, plists[i]->nom);
     printf("\n");
 }
 
@@ -81,4 +81,32 @@ int choixPlist (const Playlist** plists, const int nbPlists) {
     listePlists(plists, nbPlists);
     choix = saisieInt("Choisir playlist", 1, nbPlists);
     return choix;
+}
+
+void naviguerDansVotreBibliotheque (const int nbPlists, const Playlist** plists) {
+    clear();
+    if (nbPlists > 0) {
+        listePlists(plists, nbPlists);
+        entreeNext();
+    } else {
+        printf("Aucune playlist.\n");
+        entreeNext();
+    }
+}
+
+void creerUnePlaylist (int *nbPlists, Playlist** plists) {
+    int nbPlistsOld = *nbPlists;
+    plists = creerPlist(plists, nbPlists);
+    if (*nbPlists > nbPlistsOld) confirmPlist(plists[*nbPlists - 1]);
+}
+
+void creerMorceauAjouterPlaylist (const int nbPlists, Playlist** plists) {
+    clear();
+    if (nbPlists > 0) {
+        int i = choixPlist(plists, nbPlists) - 1;
+        nvMorceauVersPlist(plists[i]);
+    } else {
+        printf("Veuillez creer une playlist !\n");
+        entreeNext();
+    }
 }
