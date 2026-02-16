@@ -13,7 +13,7 @@
 #define PL_CAPACITE_MIN 1
 #define PL_CAPACITE_MAX 100
 
-typedef struct {
+typedef struct Playlist {
     char* nom;
     int capacite, nbMorceaux;
     Morceau** tabMorceaux;

@@ -3,9 +3,6 @@
 //
 
 #include "ihm.h"
-
-#include <stdio.h>
-
 #include "playlist.h"
 
 int menu (void) {
@@ -39,4 +36,11 @@ int saisieInt (const char* dialogue, const int min, const int max) {
         getchar();
     } while (n < min || n > max);
     return n;
+}
+
+void confirmPlist (const Playlist* p) {
+    if (p == NULL) return;
+    printf("Playlist creee avec succes\n");
+    printf("\"%s\"\n", p->nom);
+    printf("0/%d Morceaux\n", p->capacite);
 }
