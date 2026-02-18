@@ -105,7 +105,7 @@ Playlist** reallocPlists (Playlist** plists, int* nbPlists) {
             plists = NULL;
             return NULL;
         }
-        Playlist** temp = realloc(plists, (*nbPlists + 1) * sizeof(Playlist*));
+        Playlist** temp = realloc(plists, *nbPlists * sizeof(Playlist*));
         return (temp != NULL) ? temp : plists;
     }
     return plists;
