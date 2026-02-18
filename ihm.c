@@ -180,42 +180,35 @@ void supprimerPlaylist (int *nbPlists, Playlist*** plists) {
 
 void morceauPlAPl (const int* nbPlists, Playlist*** plists) {
     clear();
-    if (nbPlists > 0) {
-        int valid = 0;
-        for (int i = 0; i < *nbPlists; i++) {
-            if ((*plists)[i]->nbMorceaux > 0) {
-                valid = 1;
-                break;
-            }
-        }
-        if (valid) {
-            printf("Playlist d'origine\n\n");
-            int choixPl = choixPlist(*plists, *nbPlists);
-            const int plo =  - 1;
-            if ((*plists)[plo]->nbMorceaux > 0) {
-                printf("Playlist vide.\n");
-                entreeNext();
-            } else {
-                clear();
-                printf("Morceau a copier\n\n");
-                const int choixMo = choixMorceau((*plists)[plo]);
-                const int j = choixMo - 1;
-                int pld = -1;
-                do {
-                    clear();
-                    printf("Playlist de destination\n\n");
-                    if (pld == plo) printf("Vous ne pouvez pas choisir la meme playlist !\n");
-                    choixPl = choixPlist(*plists, *nbPlists);
-                    pld = choixPl - 1;
-                } while (pld == plo);
-                ajouterMorceauPlist((*plists)[plo], (*plists)[pld], j);
-                printf("%s par %s a ete copie de %s vers %s avec succes.\n", (*plists)[plo]->tabMorceaux[j]->titre, (*plists)[plo]->tabMorceaux[j]->artiste, (*plists)[plo]->nom, (*plists)[pld]->nom);
-                entreeNext();
-            }
-        } else {
-            printf("Aucun morceau.\n");
+    if (*nbPlists > 0) {
+        printf("Selection de la playlist d'origine\n");
+        int plo = choixPlist(*plists, *nbPlists) - 1;
+        if ((*plists)[plo]->nbMorceaux == 0) {
+            printf("Playlist vide.\n");
             entreeNext();
+            return;
         }
+        clear();
+        printf("Selection du morceau\n");
+        int indexMo = choixMorceau((*plists)[plo]);
+        int pld;
+        do {
+            clear();
+            printf("Selection de la playlist de destination\n");
+            pld = choixPlist(*plists, *nbPlists) - 1;
+            if (pld == plo) {
+                printf("Vous ne pouvez pas selectionner la meme playlist !\n");
+                entreeNext();
+            }
+        } while (pld == plo);
+        if ((*plists)[pld]->nbMorceaux < (*plists)[pld]->capacite) {
+            ajouterMorceauPlist((*plists)[plo], (*plists)[pld], indexMo);
+            printf("\n\"%s\" - %s - a ete ajoute a %s\n",
+                   (*plists)[plo]->tabMorceaux[indexMo]->titre, (*plists)[plo]->tabMorceaux[indexMo]->artiste, (*plists)[pld]->nom);
+        } else {
+            printf("\nPlaylist pleine.\n");
+        }
+        entreeNext();
     } else {
         printf("Aucune playlist.\n");
         entreeNext();

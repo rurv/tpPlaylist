@@ -56,4 +56,6 @@ void convDuree (const int duree, int* h, int* m, int* s) {
 void ajouterMorceauPlist (Playlist* plo, Playlist* pld, const int m) {
     if (plo == NULL || pld == NULL) return;
     pld->tabMorceaux[pld->nbMorceaux] = plo->tabMorceaux[m];
+    pld->tabMorceaux[pld->nbMorceaux]->nbRef++;
+    pld->nbMorceaux++;
 }
