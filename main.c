@@ -18,7 +18,7 @@ int main(void) {
                 break;
             }
             case 3:
-                //supprimerPlaylist();
+                supprimerPlaylist(&nbPlists, &plists);
                 break;
             case 4:
                 //importerPlaylist();

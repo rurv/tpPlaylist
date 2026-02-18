@@ -111,3 +111,17 @@ void creerMorceauAjouterPlaylist (const int nbPlists, Playlist*** plists) {
         entreeNext();
     }
 }
+
+void supprimerPlaylist (int *nbPlists, Playlist*** plists) {
+    clear();
+    if (nbPlists > 0) {
+        const int i = choixPlist(*plists, *nbPlists) - 1;
+        libererPlist((*plists)[i]);
+        reallocPlists(*plists, nbPlists);
+        printf("Playlist supprimee avec succes\n");
+        entreeNext();
+    } else {
+        printf("Aucune playlist.\n");
+        entreeNext();
+    }
+}

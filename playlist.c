@@ -95,3 +95,13 @@ void libererPlist (Playlist* pl) {
         pl = NULL;
     }
 }
+
+void reallocPlists (Playlist** plists, int* nbPlists) {
+    if (plists != NULL) {
+        Playlist** temp = realloc(plists, (*nbPlists - 1) * sizeof(Playlist*));
+        if (temp != NULL) {
+            plists = temp;
+            *nbPlists = *nbPlists - 1;
+        }
+    }
+}

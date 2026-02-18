@@ -18,5 +18,6 @@ int choixPlist (Playlist** plists, int nbPlists);
 void naviguerDansVotreBibliotheque (int nbPlists, Playlist*** plists);
 void creerUnePlaylist (int *nbPlists, Playlist*** plists);
 void creerMorceauAjouterPlaylist (int nbPlists, Playlist*** plists);
+void supprimerPlaylist (int *nbPlists, Playlist*** plists);
 
 #endif //TPPLAYLIST_IHM_H
