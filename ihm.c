@@ -20,7 +20,7 @@ int menu (void) {
     clear();
     int choix = 0;
     printf("Bibliotheque Musicale\n\n");
-    printf("1. Naviguer dans votre bibliothèque\n");
+    printf("1. Naviguer dans votre bibliotheque\n");
     printf("2. Creer une playlist\n");
     printf("3. Supprimer une playlist\n");
     printf("4. Importer une playlist\n");
