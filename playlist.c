@@ -85,7 +85,8 @@ void libererPlist (Playlist* pl) {
         if (pl->tabMorceaux != NULL) {
             for (int j = 0; j < pl->nbMorceaux; j++) {
                 if (pl->tabMorceaux[j] != NULL) {
-                    libererMorceau(pl->tabMorceaux[j]);
+                    pl->tabMorceaux[j]->nbRef--;
+                    if (pl->tabMorceaux[j]->nbRef <= 0) libererMorceau(pl->tabMorceaux[j]);
                 }
             }
             free(pl->tabMorceaux);
@@ -96,12 +97,16 @@ void libererPlist (Playlist* pl) {
     }
 }
 
-void reallocPlists (Playlist** plists, int* nbPlists) {
-    if (plists != NULL) {
-        Playlist** temp = realloc(plists, (*nbPlists - 1) * sizeof(Playlist*));
-        if (temp != NULL) {
-            plists = temp;
-            *nbPlists = *nbPlists - 1;
+Playlist** reallocPlists (Playlist** plists, int* nbPlists) {
+    if (*nbPlists > 0) {
+        *nbPlists = *nbPlists - 1;
+        if (*nbPlists == 0) {
+            free(plists);
+            plists = NULL;
+            return NULL;
         }
+        Playlist** temp = realloc(plists, (*nbPlists + 1) * sizeof(Playlist*));
+        return (temp != NULL) ? temp : plists;
     }
+    return plists;
 }

@@ -22,6 +22,6 @@ Playlist* initPlist (const char* nom, int capacite);
 Playlist** creerPlist (Playlist** plists, int* nbPlists);
 void nvMorceauVersPlist (Playlist* pl);
 void libererPlist (Playlist* pl);
-void reallocPlists (Playlist** plists, int* nbPlists);
+Playlist** reallocPlists (Playlist** plists, int* nbPlists);
 
 #endif //TPPLAYLIST_PLAYLIST_H
