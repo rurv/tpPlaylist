@@ -30,7 +30,7 @@ int main(void) {
                 creerMorceauAjouterPlaylist(nbPlists, &plists);
                 break;
             case 7:
-                //morceauPlAPl();
+                morceauPlAPl(&nbPlists, &plists);
                 break;
             case 8:
                 //supprimerMorceauPl();
