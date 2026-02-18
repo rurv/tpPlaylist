@@ -70,7 +70,7 @@ void confirmPlist (const Playlist* p) {
     entreeNext();
 }
 
-void listePlists (Playlist* const** plists, const int nbPlists) {
+void listePlists (Playlist*** plists, const int nbPlists) {
     printf("%d playlist", nbPlists);
     if (nbPlists > 1) printf("s");
     printf(" :\n\n");
@@ -78,13 +78,13 @@ void listePlists (Playlist* const** plists, const int nbPlists) {
     printf("\n");
 }
 
-int choixPlist (Playlist* const* plists, const int nbPlists) {
+int choixPlist (Playlist** plists, const int nbPlists) {
     listePlists(&plists, nbPlists);
     const int choix = saisieInt("Choisir playlist", 1, nbPlists);
     return choix;
 }
 
-void naviguerDansVotreBibliotheque (const int nbPlists, Playlist* const** plists) {
+void naviguerDansVotreBibliotheque (const int nbPlists, Playlist*** plists) {
     clear();
     if (nbPlists > 0) {
         listePlists(plists, nbPlists);

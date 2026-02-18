@@ -13,10 +13,9 @@ int menu (void);
 void saisieStr (char* str, const char* dialogue, int max);
 int saisieInt (const char* dialogue, int min, int max);
 void confirmPlist (const Playlist* p);
-void listePlists (Playlist* const** plists, int nbPlists);
-int choixPlist (Playlist* const* plists, int nbPlists);
-
-void naviguerDansVotreBibliotheque (int nbPlists, Playlist* const** plists);
+void listePlists (Playlist*** plists, int nbPlists);
+int choixPlist (Playlist** plists, int nbPlists);
+void naviguerDansVotreBibliotheque (int nbPlists, Playlist*** plists);
 void creerUnePlaylist (int *nbPlists, Playlist*** plists);
 void creerMorceauAjouterPlaylist (int nbPlists, Playlist*** plists);
 
