@@ -46,3 +46,9 @@ void libererMorceau (Morceau* m) {
         m = NULL;
     }
 }
+
+void convDuree (const int duree, int* h, int* m, int* s) {
+    *h = duree / 3600;
+    *m = (duree % 3600) / 60;
+    *s = duree % 60;
+}

@@ -23,5 +23,6 @@ typedef struct Playlist Playlist;
 
 Morceau* creerMorceau (void);
 void libererMorceau (Morceau* m);
+void convDuree (int duree, int* h, int* m, int* s);
 
 #endif //TPPLAYLIST_MORCEAU_H

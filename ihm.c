@@ -84,11 +84,57 @@ int choixPlist (Playlist** plists, const int nbPlists) {
     return choix;
 }
 
+void listeMorceaux (const Playlist* pl) {
+    if (pl == NULL) return;
+    if (pl->nbMorceaux == 0) {
+        printf("La playlist est vide.\n");
+        entreeNext();
+    } else {
+        printf("%s (%d morceau", pl->nom, pl->nbMorceaux);
+        if (pl->nbMorceaux > 1) printf("x");
+        printf(") :\n\n");
+        for (int i = 0; i < pl->nbMorceaux; i++) printf("%d.\t%s - %s\n", i + 1, pl->tabMorceaux[i]->titre, pl->tabMorceaux[i]->artiste);
+        printf("\n");
+    }
+}
+
+int choixMorceau (const Playlist* pl) {
+    if (pl == NULL || pl->nbMorceaux == 0) return -1;
+    listeMorceaux(pl);
+    const int choix = saisieInt("Choisir un morceau", 1, pl->nbMorceaux);
+    return choix - 1;
+}
+
+void afficherDetailsMorceau(const Morceau* m) {
+    int h, min, s;
+    convDuree(m->duree, &h, &min, &s);
+    printf("%s\t- %s\n(%d)\n%d:%d:%d\n", m->titre, m->artiste, m->annee, h, min, s);
+    entreeNext();
+}
+
 void naviguerDansVotreBibliotheque (const int nbPlists, Playlist*** plists) {
     clear();
     if (nbPlists > 0) {
         listePlists(plists, nbPlists);
-        entreeNext();
+        printf("0. Retourner au menu\n\n");
+        const int choix = saisieInt("Choisir playlist ou 0 pour retourner au menu", 0, nbPlists);
+        if (choix == 0) return;
+        const int i = choix - 1;
+        clear();
+        if ((*plists)[i]->nbMorceaux > 0) {
+            listeMorceaux((*plists)[i]);
+            printf("0. Retourner au menu\n\n");
+            const int choix1 = saisieInt("Choisir morceau ou 0 pour retourner au menu", 0, (*plists)[i]->nbMorceaux);
+            if (choix1 == 0) return;
+            const int m = choix1 - 1;
+            if (m >= 0) {
+                clear();
+                afficherDetailsMorceau((*plists)[i]->tabMorceaux[m]);
+            }
+        } else {
+            printf("Playlist vide.\n");
+            entreeNext();
+        }
     } else {
         printf("Aucune playlist.\n");
         entreeNext();

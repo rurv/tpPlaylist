@@ -15,6 +15,7 @@ int saisieInt (const char* dialogue, int min, int max);
 void confirmPlist (const Playlist* p);
 void listePlists (Playlist*** plists, int nbPlists);
 int choixPlist (Playlist** plists, int nbPlists);
+int choixMorceau (const Playlist* pl);
 void naviguerDansVotreBibliotheque (int nbPlists, Playlist*** plists);
 void creerUnePlaylist (int *nbPlists, Playlist*** plists);
 void creerMorceauAjouterPlaylist (int nbPlists, Playlist*** plists);
