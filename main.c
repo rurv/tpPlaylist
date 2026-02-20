@@ -21,21 +21,15 @@ int main(void) {
                 supprimerPlaylist(&nbPlists, &plists);
                 break;
             case 4:
-                //importerPlaylist();
-                break;
-            case 5:
-                //exporterPlaylist();
-                break;
-            case 6:
                 creerMorceauAjouterPlaylist(nbPlists, &plists);
                 break;
-            case 7:
+            case 5:
                 morceauPlAPl(&nbPlists, &plists);
                 break;
-            case 8:
+            case 6:
                 supprimerMorceauPl(&nbPlists, &plists);
                 break;
-            case 9:
+            case 7:
                 supprimerMorceauAll(&nbPlists, &plists);
                 break;
             default:break;

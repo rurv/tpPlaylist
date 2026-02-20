@@ -23,14 +23,12 @@ int menu (void) {
     printf("1. Naviguer dans votre bibliotheque\n");                // Fait
     printf("2. Creer une playlist\n");                              // Fait
     printf("3. Supprimer une playlist\n");                          // Fait
-    printf("4. Importer une playlist\n");
-    printf("5. Exporter une playlist\n");
-    printf("6. Creer un morceau et l'ajouter a une playlist\n");    // Fait
-    printf("7. Ajouter un morceau d'une playlist a une autre\n");   // Fait
-    printf("8. Supprimer un morceau d'une playlist\n");             // Fait
-    printf("9. Supprimer un morceau de toutes les playlists\n");    // Fait
+    printf("4. Creer un morceau et l'ajouter a une playlist\n");    // Fait
+    printf("5. Ajouter un morceau d'une playlist a une autre\n");   // Fait
+    printf("6. Supprimer un morceau d'une playlist\n");             // Fait
+    printf("7. Supprimer un morceau de toutes les playlists\n");    // Fait
     printf("0. Quitter\n\n");
-    choix = saisieInt("Veuillez choisir une option", 0, 9);
+    choix = saisieInt("Veuillez choisir une option", 0, 7);
     return choix;
 }
 
