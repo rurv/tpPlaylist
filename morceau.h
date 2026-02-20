@@ -25,5 +25,8 @@ Morceau* creerMorceau (void);
 void libererMorceau (Morceau* m);
 void convDuree (int duree, int* h, int* m, int* s);
 void ajouterMorceauPlist (Playlist* plo, Playlist* pld, int m);
+void supprimerMorceau (Playlist* p, int m);
+void suppMorceauAll (Playlist* p, int m, int nbPlists, Playlist*** plists);
+
 
 #endif //TPPLAYLIST_MORCEAU_H

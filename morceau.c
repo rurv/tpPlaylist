@@ -59,3 +59,29 @@ void ajouterMorceauPlist (Playlist* plo, Playlist* pld, const int m) {
     pld->tabMorceaux[pld->nbMorceaux]->nbRef++;
     pld->nbMorceaux++;
 }
+
+void supprimerMorceau (Playlist* p, int m) {
+    if (p == NULL || m < 0 || m >= p->nbMorceaux) return;
+    p->tabMorceaux[m]->nbRef--;
+    if (p->tabMorceaux[m]->nbRef <= 0) {
+        libererMorceau(p->tabMorceaux[m]);
+    }
+    for (int i = m; i < p->nbMorceaux; i++) {
+        p->tabMorceaux[i] = p->tabMorceaux[i + 1];
+    }
+    p->nbMorceaux--;
+}
+
+void suppMorceauAll (Playlist* p, int m, int nbPlists, Playlist*** plists) {
+    if (p == NULL || plists == NULL || m < 0 || m >= p->nbMorceaux) return;
+    const Morceau* c = p->tabMorceaux[m];
+    for (int i = 0; i < nbPlists; i++) {
+        Playlist* pl = (*plists)[i];
+        for (int j = 0; j < pl->nbMorceaux; j++) {
+            if (pl->tabMorceaux[j] == c) {
+                supprimerMorceau(pl, j);
+                j--;
+            }
+        }
+    }
+}

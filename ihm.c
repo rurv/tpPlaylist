@@ -20,15 +20,15 @@ int menu (void) {
     clear();
     int choix = 0;
     printf("Bibliotheque Musicale\n\n");
-    printf("1. Naviguer dans votre bibliotheque\n");
-    printf("2. Creer une playlist\n");
-    printf("3. Supprimer une playlist\n");
+    printf("1. Naviguer dans votre bibliotheque\n");                // Fait
+    printf("2. Creer une playlist\n");                              // Fait
+    printf("3. Supprimer une playlist\n");                          // Fait
     printf("4. Importer une playlist\n");
     printf("5. Exporter une playlist\n");
-    printf("6. Creer un morceau et l'ajouter a une playlist\n");
-    printf("7. Ajouter un morceau d'une playlist a une autre\n");
-    printf("8. Supprimer un morceau d'une playlist\n");
-    printf("9. Supprimer un morceau de toutes les playlists\n");
+    printf("6. Creer un morceau et l'ajouter a une playlist\n");    // Fait
+    printf("7. Ajouter un morceau d'une playlist a une autre\n");   // Fait
+    printf("8. Supprimer un morceau d'une playlist\n");             // Fait
+    printf("9. Supprimer un morceau de toutes les playlists\n");    // Fait
     printf("0. Quitter\n\n");
     choix = saisieInt("Veuillez choisir une option", 0, 9);
     return choix;
@@ -211,6 +211,50 @@ void morceauPlAPl (const int* nbPlists, Playlist*** plists) {
         entreeNext();
     } else {
         printf("Aucune playlist.\n");
+        entreeNext();
+    }
+}
+
+void supprimerMorceauPl (const int *nbPlists, Playlist*** plists) {
+    clear();
+    if (*nbPlists > 0) {
+        printf("Selection de la playlist\n");
+        int p = choixPlist(*plists, *nbPlists) - 1;
+        if ((*plists)[p]->nbMorceaux == 0) {
+            printf("Playlist vide\n");
+            entreeNext();
+            return;
+        }
+        clear();
+        printf("Selection du morceau\n");
+        int m = choixMorceau((*plists)[p]);
+        clear();
+        supprimerMorceau((*plists)[p], m);
+        printf("Le morceau a ete supprime\n");
+        entreeNext();
+    } else {
+        printf("Aucune playlist\n");
+        entreeNext();
+    }
+}
+
+void supprimerMorceauAll (const int* nbPlists, Playlist*** plists) {
+    clear();
+    if (*nbPlists > 0) {
+        printf("Selection de la playlist\n");
+        int p = choixPlist(*plists, *nbPlists) - 1;
+        if ((*plists)[p]->nbMorceaux == 0) {
+            printf("Playlist vide\n");
+            entreeNext();
+            return;
+        }
+        clear();
+        printf("Selection du morceau\n");
+        int m = choixMorceau((*plists)[p]);
+        clear();
+        suppMorceauAll((*plists)[p], m, *nbPlists, plists);
+    } else {
+        printf("Aucune playlist\n");
         entreeNext();
     }
 }

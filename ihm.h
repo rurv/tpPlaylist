@@ -21,5 +21,7 @@ void creerUnePlaylist (int *nbPlists, Playlist*** plists);
 void creerMorceauAjouterPlaylist (int nbPlists, Playlist*** plists);
 void supprimerPlaylist (int *nbPlists, Playlist*** plists);
 void morceauPlAPl (const int *nbPlists, Playlist*** plists);
+void supprimerMorceauPl (const int *nbPlists, Playlist*** plists);
+void supprimerMorceauAll (const int *nbPlists, Playlist*** plists);
 
 #endif //TPPLAYLIST_IHM_H

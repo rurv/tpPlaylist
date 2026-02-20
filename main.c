@@ -33,10 +33,10 @@ int main(void) {
                 morceauPlAPl(&nbPlists, &plists);
                 break;
             case 8:
-                //supprimerMorceauPl();
+                supprimerMorceauPl(&nbPlists, &plists);
                 break;
             case 9:
-                //supprimerMorceauAll();
+                supprimerMorceauAll(&nbPlists, &plists);
                 break;
             default:break;
         }
