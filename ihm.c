@@ -202,6 +202,13 @@ void morceauPlAPl (const int* nbPlists, Playlist*** plists) {
             }
         } while (pld == plo);
         if ((*plists)[pld]->nbMorceaux < (*plists)[pld]->capacite) {
+            for (int i = 0; i < (*plists)[pld]->nbMorceaux; i++) {
+                if ((*plists)[pld]->tabMorceaux[i] == (*plists)[plo]->tabMorceaux[indexMo]) {
+                    printf("Le morceau est deja dans la playlist\n");
+                    entreeNext();
+                    return;
+                }
+            }
             ajouterMorceauPlist((*plists)[plo], (*plists)[pld], indexMo);
             printf("\n\"%s\" - %s - a ete ajoute a %s\n",
                    (*plists)[plo]->tabMorceaux[indexMo]->titre, (*plists)[plo]->tabMorceaux[indexMo]->artiste, (*plists)[pld]->nom);
